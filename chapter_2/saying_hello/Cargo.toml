@@ -1,9 +1,7 @@
-workspace = { members = ["saying_hello"] }
 [package]
-name = "chapter_2"
+name = "saying_hello"
 version = "0.1.0"
 edition = "2021"
-authors = ["Yotoko"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
