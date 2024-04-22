@@ -1,0 +1,15 @@
+[package]
+name = "exercises_for_programmers"
+version = "0.1.0"
+edition = "2021"
+
+[workspace]
+members = ["chapter_2"]
+
+[workspace.package]
+authors = ["Yotoko"]
+description = "Exercises for Programmers"
+documentation = "Practice makes permanent."
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
