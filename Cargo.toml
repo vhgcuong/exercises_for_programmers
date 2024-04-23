@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-members = ["chapter_2"]
+members = ["chapter_2", "chapter_2/saying_hello"]
 
 [workspace.package]
 authors = ["Yotoko"]
