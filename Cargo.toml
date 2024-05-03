@@ -7,7 +7,8 @@ edition = "2021"
 members = [
     "chapter_2",
     "chapter_2/saying_hello",
-    "chapter_2/counting_the_number_of_characters"
+    "chapter_2/counting_the_number_of_characters",
+    "chapter_2/mad_lib"
 ]
 
 [workspace.package]
