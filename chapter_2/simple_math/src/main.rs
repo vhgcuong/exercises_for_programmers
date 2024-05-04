@@ -16,7 +16,7 @@ fn logic(first: u32, second: u32) {
             println!("{first} - {second} = {}", first - second);
         },
         None => {
-            println!("Error: {first} - {second} (u32:MAX = 4_294_967_295u32)");
+            println!("Error: {first} - {second} (u32:MIN = 0)");
         }
     }
 
