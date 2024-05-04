@@ -2,10 +2,41 @@ use std::io;
 use std::io::Write;
 
 fn logic(first: u32, second: u32) {
-    println!("{first} + {second} = {}", first + second);
-    println!("{first} - {second} = {}", first - second);
-    println!("{first} * {second} = {}", first * second);
-    println!("{first} / {second} = {}", first / second);
+    match first.checked_add(second) {
+        Some(_) => {
+            println!("{first} + {second} = {}", first + second);
+        },
+        None => {
+            println!("Error: {first} + {second} (u32:MAX = 4_294_967_295u32)");
+        }
+    }
+
+    match first.checked_sub(second) {
+        Some(_) => {
+            println!("{first} - {second} = {}", first - second);
+        },
+        None => {
+            println!("Error: {first} - {second} (u32:MAX = 4_294_967_295u32)");
+        }
+    }
+
+    match first.checked_mul(second) {
+        Some(_) => {
+            println!("{first} * {second} = {}", first * second);
+        },
+        None => {
+            println!("Error: {first} * {second} (u32:MAX = 4_294_967_295u32)");
+        }
+    }
+
+    match first.checked_div(second) {
+        Some(_) => {
+            println!("{first} / {second} = {}", first / second);
+        },
+        None => {
+            println!("Error: {first} / {second} (u32:MAX = 4_294_967_295u32)");
+        }
+    }
 }
 
 fn input_keyboard(text: String) -> u32 {
