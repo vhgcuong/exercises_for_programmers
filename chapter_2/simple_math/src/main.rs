@@ -1,35 +1,46 @@
-use std::io;
-use std::io::Write;
+use iced::executor;
+use iced::alignment;
+use iced::widget::{
+    column, container, scrollable, text,
+};
+use iced::{Color, Command, Length, Settings};
+use iced::{Application, Element, Theme};
 
-fn main() {
-    let get_num = |msg| loop {
-        print!("{msg}");
-        io::stdout().flush().unwrap();
-        let mut input = String::new();
+pub fn main() -> iced::Result {
+    SimpleMath::run(Settings::default())
+}
 
-        io::stdin().read_line(&mut input).unwrap();
-        if let Ok(num) = input.trim().parse::<u32>() {
-            break num;
-        }
+struct SimpleMath;
 
-        println!("Invalid input. Please enter a number.");
-    };
+impl Application for SimpleMath {
+    type Executor = executor::Default;
+    type Flags = ();
+    type Message = ();
+    type Theme = Theme;
 
-    let first = get_num("What is the first number? ");
-    let second = get_num("What is the second number? ");
+    fn new(_flags: ()) -> (SimpleMath, Command<Self::Message>) {
+        (SimpleMath, Command::none())
+    }
 
-    for op in ["+", "-", "*", "/"] {
-        let result = match op {
-            "+" => first.checked_add(second),
-            "-" => first.checked_sub(second),
-            "*" => first.checked_mul(second),
-            "/" => first.checked_div(second),
-            _ => unreachable!()
-        };
+    fn title(&self) -> String {
+        String::from("GUI Simple Math")
+    }
 
-        match result {
-            Some(value) => println!("{first} {op} {second} = {value}"),
-            None => println!("Error: Overflow for operation {first} {op} {second}")
-        }
+    fn update(&mut self, _message: Self::Message) -> Command<Self::Message> {
+        Command::none()
+    }
+
+    fn view(&self) -> Element<Self::Message> {
+        let title = text("Simple Math")
+            .width(Length::Fill)
+            .size(100)
+            .style(Color::from([0.5, 0.5, 0.5]))
+            .horizontal_alignment(alignment::Horizontal::Center);
+
+        let content = column![title]
+            .spacing(20)
+            .max_width(800);
+
+        scrollable(container(content).padding(40).center_x()).into()
     }
 }
