@@ -1,16 +1,24 @@
 use iced::executor;
-use iced::alignment;
 use iced::widget::{
-    column, container, scrollable, text, text_input
+    column, text, button, Column
 };
-use iced::{Color, Command, Length, Settings};
+use iced::{Command, Settings};
 use iced::{Application, Element, Theme};
 
 pub fn main() -> iced::Result {
     SimpleMath::run(Settings::default())
 }
 
-struct SimpleMath;
+#[derive(Default, Debug)]
+struct SimpleMath {
+    value: i64
+}
+
+#[derive(Debug, Clone, Copy)]
+enum Message {
+    Increment,
+    Decrement,
+}
 
 impl Application for SimpleMath {
     type Executor = executor::Default;
@@ -19,7 +27,7 @@ impl Application for SimpleMath {
     type Theme = Theme;
 
     fn new(_flags: ()) -> (SimpleMath, Command<Self::Message>) {
-        (SimpleMath, Command::none())
+        (SimpleMath { value: 0 }, Command::none())
     }
 
     fn title(&self) -> String {
@@ -31,23 +39,21 @@ impl Application for SimpleMath {
     }
 
     fn view(&self) -> Element<Self::Message> {
-        let title = text("Simple Math")
-            .width(Length::Fill)
-            .size(100)
-            .style(Color::from([0.5, 0.5, 0.5]))
-            .horizontal_alignment(alignment::Horizontal::Center);
+        // The buttons
+        let increment = button("+").on_press(Message::Increment);
+        let decrement = button("-").on_press(Message::Decrement);
 
-        let input = text_input("What is the first number? ", "")
-            .id(INPUT_ID.clone())
-            // .on_input(Message::InputChanged)
-            // .on_submit(Message::CreateTask)
-            .padding(15)
-            .size(30);
+        // The number
+        let counter = text(15);
 
-        let content = column![title, input]
+        let content = Column::new()  // Use Column::new() instead of column! macro
+            .push(increment)
+            .push(counter)
+            .push(decrement)
             .spacing(20)
             .max_width(400);
 
-        scrollable(container(content).padding(40).center_x()).into()
+        // Convert the Column to an Element explicitly
+        content.into()
     }
 }
