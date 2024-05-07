@@ -1,7 +1,7 @@
 use iced::executor;
 use iced::alignment;
 use iced::widget::{
-    column, container, scrollable, text,
+    column, container, scrollable, text, text_input
 };
 use iced::{Color, Command, Length, Settings};
 use iced::{Application, Element, Theme};
@@ -37,9 +37,16 @@ impl Application for SimpleMath {
             .style(Color::from([0.5, 0.5, 0.5]))
             .horizontal_alignment(alignment::Horizontal::Center);
 
-        let content = column![title]
+        let input = text_input("What is the first number? ", "")
+            .id(INPUT_ID.clone())
+            // .on_input(Message::InputChanged)
+            // .on_submit(Message::CreateTask)
+            .padding(15)
+            .size(30);
+
+        let content = column![title, input]
             .spacing(20)
-            .max_width(800);
+            .max_width(400);
 
         scrollable(container(content).padding(40).center_x()).into()
     }
