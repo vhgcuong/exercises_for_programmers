@@ -9,7 +9,8 @@ members = [
     "chapter_2/saying_hello",
     "chapter_2/counting_the_number_of_characters",
     "chapter_2/mad_lib",
-    "chapter_2/simple_math"
+    "chapter_2/simple_math",
+    "chapter_2/retirement_calculator",
 ]
 
 [workspace.package]
