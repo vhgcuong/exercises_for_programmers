@@ -11,6 +11,13 @@ members = [
     "chapter_2/mad_lib",
     "chapter_2/simple_math",
     "chapter_2/retirement_calculator",
+    "chapter_3",
+    "chapter_3/area_of_a_rectangular_room",
+    "chapter_3/computing_simple_interest",
+    "chapter_3/currency_conversion",
+    "chapter_3/paint_calculator",
+    "chapter_3/pizza_party",
+    "chapter_3/self-checkout"
 ]
 
 [workspace.package]
