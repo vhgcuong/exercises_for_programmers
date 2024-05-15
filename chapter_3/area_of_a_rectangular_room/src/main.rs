@@ -4,13 +4,13 @@ use std::num::ParseIntError;
 
 const CONSTANT_METER: f64 = 0.09290304;
 
-struct Rectangular<T> {
-    width: T,
-    length: T
+struct Rectangular {
+    width: u32,
+    length: u32
 }
 
-impl<T> Rectangular<T>  {
-    fn square<T>(&self) -> T {
+impl Rectangular  {
+    fn square(&self) -> u32 {
         match self.length.checked_mul(self.width) {
             None => panic!(""),
             Some(_) => self.length * self.width
@@ -21,11 +21,11 @@ impl<T> Rectangular<T>  {
         self.square() as f64 * CONSTANT_METER
     }
 
-    fn get_width<T>(&self) -> &T {
+    fn get_width(&self) -> u32 {
         self.width
     }
 
-    fn get_length(&self) -> &T {
+    fn get_length(&self) -> u32 {
         self.length
     }
 }
