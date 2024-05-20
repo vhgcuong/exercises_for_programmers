@@ -11,7 +11,7 @@ members = [
     "chapter_2/mad_lib",
     "chapter_2/simple_math",
     "chapter_2/retirement_calculator",
-    "j4fun",
+    "j4fun", "gui",
 ]
 
 [workspace.package]
