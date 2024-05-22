@@ -12,6 +12,8 @@ members = [
     "chapter_2/simple_math",
     "chapter_2/retirement_calculator",
     "j4fun", "gui",
+    "gui/slint_calc",
+    "gui/slint_calctaller_de_31",
 ]
 
 [workspace.package]
